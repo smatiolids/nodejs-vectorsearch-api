@@ -22,7 +22,7 @@ const client = new cassandra.Client({
 });
 
 client.connect()
-    .then(() => console.log('Connected to Cassandra'))
-    .catch(err => console.error('Failed to connect to Cassandra', err));
+    .then(() => console.log('Connected to DSE'))
+    .catch(err => console.error('Failed to connect to DSE', err));
 
 module.exports = client;
