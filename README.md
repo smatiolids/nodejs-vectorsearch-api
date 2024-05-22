@@ -1,6 +1,6 @@
 # NodeJS Vector Search API
 
-Sample code for deploying a API that performs Vector Search on a DataStax Enterprise table
+Sample code for deploying an API that performs Vector Search on a DataStax Enterprise table
 
 # API
 
