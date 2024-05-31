@@ -4,9 +4,9 @@ const AddressTranslator = require('cassandra-driver').policies.addressResolution
 
 class MyAddressTranslator extends AddressTranslator {
     translate(address, port, callback) {
-      callback(null, process.env.DSE_NODES, port)
+        callback(null, process.env.DSE_NODES, port)
     }
-  }
+}
 
 const client = new cassandra.Client({
     contactPoints: [process.env.DSE_NODES],
@@ -14,11 +14,14 @@ const client = new cassandra.Client({
     keyspace: process.env.DSE_KEYSPACE,
     authProvider: new cassandra.auth.PlainTextAuthProvider(process.env.DSE_USER, process.env.DSE_PASS),
     socketOptions: {
-        connectTimeout : 10000
-    }, 
-    policies: { 
-        addressResolution: new MyAddressTranslator() 
-      }
+        connectTimeout: 10000
+    },
+    queryOptions: { 
+        consistency: cassandra.types.consistencies.localQuorum 
+    },
+    policies: {
+        addressResolution: new MyAddressTranslator()
+    }
 });
 
 client.connect()
