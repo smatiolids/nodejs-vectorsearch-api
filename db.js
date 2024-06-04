@@ -17,7 +17,7 @@ const client = new cassandra.Client({
         connectTimeout: 10000
     },
     queryOptions: { 
-        consistency: cassandra.types.consistencies.localQuorum 
+        consistency: cassandra.types.consistencies.localOne 
     },
     policies: {
         addressResolution: new MyAddressTranslator()
